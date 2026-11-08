@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!/.env.example
+runs/
+outputs/
+data/
+checkpoints/
+*.mp4
+*.mcap
+*.safetensors
+*.pt
+*.pth

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a26">
+  <meta name="description" content="面向单台 SO-101 的具身智能体架构、VLA 技能路由、安全、数据和 RSI 方案。">
+  <title>SO-101 具身智能体 · 架构方案</title>
+  <style>
+    :root{--bg:#101a26;--panel:#172635;--panel2:#1c3040;--ink:#edf4f7;--muted:#aec0cb;--line:#385363;--teal:#5ce0c0;--blue:#7eb8ff;--gold:#ffc96d;--red:#ff8d84;--purple:#c7a5ff;--green:#a4e6a4;--max:1160px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 70% -10%,#254356 0,transparent 42%),var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI","Noto Sans SC",sans-serif}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}code{font:0.91em ui-monospace,SFMono-Regular,Consolas,monospace;color:#d6efff;background:#10202b;padding:.12em .34em;border-radius:5px}header{border-bottom:1px solid #334957;background:#101a26e8;position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}.bar{max-width:var(--max);margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:750;letter-spacing:.02em}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:500}.nav{display:flex;gap:15px;flex-wrap:wrap;font-size:13px}.nav a{color:#c6d9e4}.wrap{max-width:var(--max);margin:auto;padding:35px 22px 80px}.hero{padding:42px 0 28px;display:grid;grid-template-columns:1.35fr .65fr;gap:26px;align-items:end}.eyebrow{color:var(--teal);font:700 12px/1.3 ui-monospace,monospace;letter-spacing:.15em;text-transform:uppercase}.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.05;margin:15px 0}.hero p{max-width:760px;color:#ccdae1;font-size:18px;margin:0}.hero-side{border:1px solid #406170;background:#142734;padding:18px;border-radius:16px}.hero-side strong{display:block;color:var(--gold);font-size:15px;margin-bottom:5px}.hero-side p{font-size:13px;color:var(--muted)}.pillrow{display:flex;flex-wrap:wrap;gap:8px;margin:19px 0}.pill{border:1px solid #436273;border-radius:100px;padding:5px 10px;font-size:12px;color:#d8e7ed}.section{padding:29px 0;border-top:1px solid #344957;scroll-margin-top:75px}.section h2{font-size:28px;margin:0 0 7px}.lead{color:var(--muted);margin:0 0 20px}.diagram{background:linear-gradient(145deg,#152533,#13212b);border:1px solid #385363;border-radius:20px;padding:24px;overflow:hidden}.stack{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:stretch}.node{border:1px solid var(--line);border-radius:14px;padding:15px 16px;background:#192b39;min-height:116px;position:relative}.node h3{font-size:16px;margin:4px 0 6px}.node p{color:#bfd0d9;font-size:13px;margin:0}.node .tag{font:700 10px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}.brain{border-color:#8770bf}.brain .tag{color:var(--purple)}.memory{border-color:#4b8290}.memory .tag{color:var(--blue)}.skills{border-color:#9d8652}.skills .tag{color:var(--gold)}.vla{border-color:#4b917e}.vla .tag{color:var(--teal)}.backend{border-color:#72904f}.backend .tag{color:var(--green)}.safety{border-color:#a75353}.safety .tag{color:var(--red)}.full{grid-column:1/-1}.arrow{display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:22px;font-weight:800}.arrow span{font-size:11px;font-weight:500;color:var(--muted);margin-left:9px}.safety-band{margin-top:13px;background:#351f28;border:1px solid #844e56;border-radius:12px;padding:13px 16px;display:flex;gap:12px;align-items:center}.safety-band b{color:#ffaea8;white-space:nowrap}.safety-band span{font-size:13px;color:#e8c7c6}.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{background:var(--panel);border:1px solid #354b5a;border-radius:15px;padding:18px}.card h3{font-size:17px;margin:0 0 8px}.card p,.card li{font-size:14px;color:#c2d1d9}.card ul{padding-left:20px;margin:10px 0 0}.card li+li{margin-top:7px}.callout{border-left:3px solid var(--gold);background:#292a29;padding:13px 16px;color:#e9dcc0;border-radius:0 9px 9px 0;margin:16px 0}.tagline{font:700 11px ui-monospace,monospace;color:var(--teal);text-transform:uppercase;letter-spacing:.1em}.route{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;counter-reset:route}.route .card{position:relative;padding-top:47px}.route .card:before{counter-increment:route;content:counter(route,decimal-leading-zero);position:absolute;top:15px;left:17px;color:var(--teal);font:700 12px ui-monospace,monospace}.tablewrap{overflow:auto;border:1px solid #354b5a;border-radius:14px}table{border-collapse:collapse;width:100%;min-width:690px;background:#162430}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid #334653;vertical-align:top;font-size:13px}th{color:var(--teal);font-size:12px;text-transform:uppercase;letter-spacing:.07em}td{color:#c8d7de}tr:last-child td{border-bottom:0}.severity{font-weight:700}.stop{color:var(--red)}.operator{color:var(--gold)}.ok{color:var(--green)}.schema{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.schema div{border:1px solid #385363;background:#152633;padding:13px;border-radius:11px}.schema b{display:block;color:var(--blue);font-size:13px;margin-bottom:5px}.schema span{font-size:12px;color:#bfced6}.timeline{display:grid;gap:10px}.step{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;padding:14px 16px;background:var(--panel);border:1px solid #354b5a;border-radius:13px}.stepno{width:36px;height:36px;display:grid;place-items:center;background:#20403f;color:var(--teal);border-radius:50%;font-weight:800}.step h3{margin:0 0 4px;font-size:15px}.step p{margin:0;color:#bdcbd3;font-size:13px}.refgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.ref{background:var(--panel);border:1px solid #354b5a;padding:15px;border-radius:12px}.ref b{display:block;margin-bottom:4px}.ref p{font-size:12px;color:var(--muted);margin:5px 0}.foot{border-top:1px solid #354b5a;color:#8fa3af;margin-top:35px;padding-top:20px;font-size:12px}.small{font-size:12px;color:#9eb0b9}.button{display:inline-block;border-radius:9px;background:var(--teal);color:#10222a;font-weight:800;padding:9px 13px;margin-top:12px}.button:hover{text-decoration:none;background:#8cf0d8}.badge{font:700 10px ui-monospace,monospace;color:#abc2ce;border:1px solid #466170;border-radius:99px;padding:3px 8px}.nowrap{white-space:nowrap}
+    @media(max-width:820px){.hero{grid-template-columns:1fr}.stack{grid-template-columns:1fr 1fr}.full{grid-column:1/-1}.route{grid-template-columns:1fr 1fr}.schema{grid-template-columns:repeat(2,1fr)}.nav{display:none}}
+    @media(max-width:540px){.wrap{padding:22px 15px 60px}.bar{padding:10px 15px}.stack,.split,.route,.refgrid{grid-template-columns:1fr}.full{grid-column:auto}.schema{grid-template-columns:1fr 1fr}.safety-band{align-items:flex-start;flex-direction:column}.hero{padding-top:25px}.section h2{font-size:24px}}
+  </style>
+</head>
+<body>
+<header><div class="bar"><div class="brand">SO-101 · EMBODIED AGENT<small>单臂具身智能体工程设计</small></div><nav class="nav"><a href="#architecture">架构</a><a href="#brain">脑与小脑</a><a href="#data">示教与数据</a><a href="#safety">安全</a><a href="#rsi">RSI</a><a href="#code">代码结构</a><a href="#roadmap">落地步骤</a><a href="#research">论文与代码</a></nav></div></header>
+<main class="wrap">
+  <section class="hero">
+    <div><div class="eyebrow">Engineering Blueprint · 2026-11</div><h1>让 SO-101<br>看懂、会做、能改进</h1><p>把 GPT-6 Astra 留作可替换的高层“大脑”，用示教记忆提供上下文，以技能和兼容的 VLA 作为“小脑”，再由独立安全层把每个动作限制在已校准的范围内。</p><div class="pillrow"><span class="pill">目标硬件：单台 SO-101</span><span class="pill">现有底座：RoboOrchard + HoloBrain 服务</span><span class="pill">改进方式：离线 RSI → 仿真 → 人审 → 小流量试运行</span></div></div>
+    <aside class="hero-side"><strong>当前工程边界</strong><p>项目已有 HoloBrain 动作服务、WebSocket policy 接口、Isaac 仿真和 MCAP/MP4 记录链路。现有 HoloBrain 权重面向 Panda/其他已配置 embodiment；代码中没有找到 SO-101 驱动或专用权重。新页面的方案因此保留通用适配口，不会把未验证权重直接接到 SO-101。</p><span class="badge">具体电机/相机/标定参数仍需按实机读取</span></aside>
+  </section>
+
+  <section id="architecture" class="section"><h2>一张图看系统</h2><p class="lead">模型负责理解和建议；版本化技能负责做事；硬安全监督器决定动作能不能下发。小脑可以切换不同 VLA，但只调用当前 embodiment、观测和动作格式都匹配的那一个。</p>
+    <div class="diagram">
+      <div class="stack">
+        <article class="node brain"><div class="tag">Brain · high level</div><h3>GPT-6 Astra provider</h3><p>拆分任务、选择注册技能、决定何时取示教上下文、读取执行反馈。输出结构化 SkillCall，不输出电机目标。</p></article>
+        <article class="node memory"><div class="tag">Context · ICL</div><h3>示教记忆与任务上下文</h3><p>按任务、物体、场景和成功结果检索少量已审核示例；视频片段与动作/关节状态记录分开引用。</p></article>
+        <article class="node"><div class="tag">Task API</div><h3>任务入口与状态机</h3><p>接收指令、episode ID、operator approval；限制回合、时长和工具集合，记录任务终止原因。</p></article>
+        <div class="arrow full">↓ <span>只允许已注册、带版本和前后置条件的技能调用</span></div>
+        <article class="node skills"><div class="tag">Skills · cerebellum</div><h3>技能注册表 + 有界 Runner</h3><p>如 approach、grasp、lift、place、recover。每项技能声明 embodiment、动作 schema、检查点、超时、重试上限与人审要求。</p></article>
+        <article class="node vla"><div class="tag">Policy Router</div><h3>多 VLA / 控制器适配器</h3><p>按 SO-101 支持、传感器、技能、时延和健康状态选一个；可扩展 Pi 系列、HoloBrain、ACT/其他模型。</p></article>
+        <article class="node memory"><div class="tag">Verified skills</div><h3>技能库与上下文示例</h3><p>只加载离线验证并晋级的不可变版本。临时生成的 Python 或策略不能直接在实机运行。</p></article>
+        <div class="arrow full">↓ <span>经 SO-101 action-schema 和校准检查后才可写入硬件</span></div>
+        <article class="node backend"><div class="tag">Robot Adapter</div><h3>LeRobot SO-101 backend</h3><p>归一化相机、关节、夹爪、校准 ID、stop/hold；串口和电机 SDK 被封装在此，不泄漏到大脑层。</p></article>
+        <article class="node"><div class="tag">Existing stack</div><h3>RoboOrchard / HoloBrain</h3><p>复用 observation/action 契约、session policy 和仿真评估；增加 SO-101 embodiment adapter 与兼容模型卡。</p></article>
+        <article class="node backend"><div class="tag">Embodiment</div><h3>SO-101 + 相机</h3><p>动作单位、关节顺序、软硬限位、相机内外参、夹爪方向都从实机配置读取并带版本。</p></article>
+        <article class="node safety full"><div class="tag">Independent safety plane · always on</div><h3>安全监督器与人工接管</h3><p>新鲜度、维度/顺序、限位、每步变化、动作时长、急停状态检查。任何故障默认拒绝新命令、停止或保持，并转人工判断；监督器不接受大模型覆盖。</p></article>
+      </div>
+      <div class="safety-band"><b>独立于模型的硬边界</b><span>硬件急停 / 电源隔离、驱动器限位、工作空间、低速试运行和 watchdog 必须在 SO-101 backend/控制器侧成立；Python 检查只是第二道门。</span></div>
+    </div>
+  </section>
+
+  <section id="brain" class="section"><h2>脑、小脑和技能怎么分工</h2><p class="lead">分层是工程边界，不要求模仿生物结构。控制周期中避免让云端大模型逐帧决定电机；它做稀疏的任务级决策，低层按稳定频率闭环。</p>
+    <div class="split">
+      <article class="card"><div class="tagline">大脑 · GPT-6 Astra (可替换)</div><h3>只产出有限的计划和技能调用</h3><ul><li>把“把积木放进盒子”拆成已注册的技能。</li><li>通过 ICL 读 1–3 条相似、获准使用的示教摘要或短片。</li><li>收到技能结果后选继续、换技能、暂停或求助。</li><li>不拿到串口、不生成任意 shell、不直接写关节值。</li></ul></article>
+      <article class="card"><div class="tagline">小脑 · 技能执行 + VLA Router</div><h3>可以接多个 VLA，但按兼容性路由</h3><ul><li>每个模型实现同一个 PolicyAdapter，并声明支持的 SO-101 embodiment、相机模态、动作 schema、技能、延迟与版本。</li><li>每个动作段选择一个兼容策略；没有匹配项就安全停止，不静默切换到别的机器人模型。</li><li>VLA 输出仍需 safety supervisor 校验，再交 SO-101 adapter。</li><li>HoloBrain 可保留在 registry；需先有 SO-101 数据、动作映射和专用验证结果。</li></ul></article>
+    </div>
+    <div class="callout">推荐框架：沿用 RoboOrchard 的 typed policy/session 与评测，把 PyRUA-Lean 的“短程序组合原语、检查结果、局部重试”改造成白名单技能；参考 uni-robot-agent 的统一工具/后端接口。先集成接口，不引入整套外部运行时，减少 SO-101 驱动和现有依赖冲突。</div>
+  </section>
+
+  <section id="data" class="section"><h2>录视频示教、上下文学习和数据管理</h2><p class="lead">可以录一段视频帮助模型理解过程，但训练精准动作策略需要把视频与机器人动作、状态和时间对齐。只存 MP4 不知道每帧对应什么电机动作。</p>
+    <div class="route">
+      <article class="card"><h3>采集示教</h3><p>人工 teleop；同步 RGB、关节位置/速度、夹爪命令、动作时间戳、任务指令和人工标注。</p></article>
+      <article class="card"><h3>质量检查</h3><p>检查掉帧、时钟漂移、校准 ID、动作维度、碰撞/失败标签；质量不合格的 demo 不进入 ICL 索引。</p></article>
+      <article class="card"><h3>检索上下文</h3><p>用任务/物体/场景/成功状态检索少量片段；给 GPT-6 Astra 看步骤和关键帧，不传整个视频历史。</p></article>
+      <article class="card"><h3>训练策略</h3><p>同步 action/state 的轨迹进入 LeRobot 数据集或现有 RODataset/LMDB 转换链路，训练 SO-101 兼容 VLA。</p></article>
+    </div>
+    <div class="schema" style="margin-top:14px">
+      <div><b>episode manifest</b><span>run / episode / task / operator / outcome / seed</span></div>
+      <div><b>robot identity</b><span>SO-101 序列号别名、固件、joint order、calibration ID</span></div>
+      <div><b>aligned streams</b><span>camera timestamp、joint state、action、clock source</span></div>
+      <div><b>model provenance</b><span>brain / VLA / skill / prompt / code commit / checkpoint hash</span></div>
+      <div><b>events</b><span>safety stops、失败码、人工接管原因与结果</span></div>
+    </div>
+    <p class="small">存储建议：原始 MP4/MCAP 只追加、不覆盖；事件和 manifest 用 JSONL/JSON；训练转换版用版本化 LeRobot 数据集。视频、动作标签、生成数据都保留来源与许可。项目已有 MCAP/MP4 和 MCAP→LeRobot 转换工具，可作为入口。</p>
+  </section>
+
+  <section id="safety" class="section"><h2>稳定性、安全和人工介入</h2><p class="lead">把失败当作正式状态。对实体 SO-101，未知执行结果不能自动重放；急停或校准错误后必须由人确认恢复。</p>
+    <div class="tablewrap"><table><thead><tr><th>情况</th><th>运行时动作</th><th>人工处理</th></tr></thead><tbody>
+      <tr><td>相机帧过旧、时间戳错位、状态缺失</td><td class="stop">不发新动作；安全停止并写入 telemetry</td><td class="operator">检查相机、线缆、同步；确认新 observation 后才恢复</td></tr>
+      <tr><td>关节顺序/维度/单位不匹配、NaN、越界或变化过大</td><td class="stop">在写电机前拒绝整个 action chunk；不做静默裁剪</td><td class="operator">检查 adapter、标定和模型卡；必要时在低速台架重标定</td></tr>
+      <tr><td>模型超时、连接断开或执行回执未知</td><td class="stop">禁止自动重放；停止请求并保持/撤销使能</td><td class="operator">确认机械臂位置与夹持状态，再选择继续、回零或终止</td></tr>
+      <tr><td>技能无进展、抓取失败、物体状态不确定</td><td>不自动重发动作；先拿新 observation，再由大脑选择已验证的 recovery skill</td><td class="operator">执行回执未知或状态不明时暂停 episode，由人工选择继续、复位或终止</td></tr>
+      <tr><td>触发急停、碰撞、限位、温度/电流异常</td><td class="stop">硬件侧 stop；锁住自动重启，记录硬安全事件</td><td class="operator">人工检查并显式复位；该 episode 不计作自动成功</td></tr>
+    </tbody></table></div>
+    <div class="split" style="margin-top:14px"><article class="card"><h3>上线前的独立保障</h3><ul><li>急停与电机 disable 能独立于 GPT/VLA 服务工作。</li><li>首轮 profile 从真实 SO-101 校准导入，绝不猜 joint order/单位/软限位。</li><li>起始动作 chunk 只放 1 步；通过仿真与台架评测后再逐级放大。</li><li>设备、相机、模型健康检查不过就不进入控制态。</li></ul></article><article class="card"><h3>接管界面应显示</h3><ul><li>任务目标、当前技能和预期后置条件。</li><li>实时相机帧、当前关节状态、最近动作与回执。</li><li>暂停、软停止、硬件急停状态、继续/失败/人工完成按钮。</li><li>操作者、接管原因、修复动作和是否允许作为示教数据。</li></ul></article></div>
+  </section>
+
+  <section id="code" class="section"><h2>已落到工程里的代码入口</h2><p class="lead">当前是可扩展的安全骨架。模型密钥、摄像头、LeRobot 串口、SO-101 校准和评测环境没有在这里伪造配置；接好真实硬件信息后再实现具体 adapter。</p>
+    <div class="refgrid">
+      <article class="ref"><b><a href="../embodied_agent/contracts.py">contracts.py</a> + <a href="../embodied_agent/interfaces.py">interfaces.py</a></b><p>Observation、ActionChunk、SkillCall，以及 Brain / DemoMemory / VLA / Robot 接口。</p></article>
+      <article class="ref"><b><a href="../embodied_agent/policy_router.py">policy_router.py</a> + <a href="../embodied_agent/skills/policy_chunk.py">policy_chunk.py</a></b><p>按 embodiment、观测模态、动作 schema 和技能能力路由；只注册 verified skill。</p></article>
+      <article class="ref"><b><a href="../embodied_agent/safety.py">safety.py</a> + <a href="../embodied_agent/adapters/so101.py">adapters/so101.py</a></b><p>关节单位/顺序、观测新鲜度、动作步数和校准限位检查；初始 SO-101 backend 每次仅收 1 步。</p></article>
+      <article class="ref"><b><a href="../embodied_agent/runtime.py">runtime.py</a> + <a href="../embodied_agent/episode_store.py">episode_store.py</a></b><p>一个新 observation 对应一个技能决策和动作块；错误或回执未知时停机并留下 append-only JSONL 事件。</p></article>
+      <article class="ref"><b><a href="../embodied_agent/rsi.py">rsi.py</a> + <a href="../embodied_agent/skill_registry.py">skill_registry.py</a></b><p>固定 episode/seed 对比、零硬安全事件、成功率/时延门槛和显式人审；通过后仍需独立操作切换 artifact。</p></article>
+      <article class="ref"><b><a href="../embodied_agent/README.md">README.md</a> + <a href="so101_safety_profile.template.json">SO-101 安全配置模板</a></b><p>关节名和限位为空，故意不能放行动作；必须从实机驱动与校准读取，不猜测。</p></article>
+    </div>
+  </section>
+
+  <section id="rsi" class="section"><h2>这个工程的 RSI 怎么写</h2><p class="lead">参考 ENPIRE 的 reset–execute–verify–record–refine 和 ASPIRE 的“技能精炼式学习”：先冻结评测环境，再改策略侧。第一版 RSI 不改权重、不改 verifier、不改安全阈值，也不在线自我更新。</p>
+    <div class="timeline">
+      <div class="step"><div class="stepno">1</div><div><h3>固定 baseline 和任务切分</h3><p>保存当前 SO-101 adapter、skills、model、prompt、calibration 的哈希；固定开发 seed 与 held-out seed。独立 verifier 决定成功，Agent 看不到真值捷径。</p></div></div>
+      <div class="step"><div class="stepno">2</div><div><h3>记录所有成功、失败和中断</h3><p>保留视频、动作、状态、失败码、工具回执与人工干预；失败不删除、不伪装成模型完成。</p></div></div>
+      <div class="step"><div class="stepno">3</div><div><h3>提出可证伪的小改动</h3><p>GPT-6 Astra 离线分析失败簇，只改一个技能、检索策略、prompt 或路由规则；写 hypothesis、diff、预期指标和回滚点。</p></div></div>
+      <div class="step"><div class="stepno">4</div><div><h3>隔离运行与分层评测</h3><p>静态检查 / sandbox → Isaac 仿真固定 seed → 未见 seed → 人工批准的 SO-101 shadow mode → 少量 canary。候选和 baseline 用同场景、同 reset、同 verifier。</p></div></div>
+      <div class="step"><div class="stepno">5</div><div><h3>安全门槛优先于成功率</h3><p>任一硬安全事件直接拒绝；比较成功率、失败类型、p95 latency、人工介入率和成本。达到样本数且无回归后还要人工审核，才能升级 registry。</p></div></div>
+      <div class="step"><div class="stepno">6</div><div><h3>版本晋级与一键回滚</h3><p>candidate manifest 记录代码、模型、技能、数据与评测哈希。稳定版只切换版本指针；出错即回退上一签名版本，不自动在线覆盖。</p></div></div>
+    </div>
+    <div class="callout">每次 RSI 只允许策略侧变化。reset、verifier、seed、SO-101 限位、急停合同和数据 schema 均只读；否则前后成绩不可比较。</div>
+  </section>
+
+  <section id="roadmap" class="section"><h2>从现在到 SO-101 上机</h2><p class="lead">先把硬件和数据契约做正确，再接 GPT 和 VLA。现有 Panda HoloBrain 模型不能直接作为 SO-101 controller。</p>
+    <div class="timeline">
+      <div class="step"><div class="stepno">A</div><div><h3>盘点硬件与只读检查</h3><p>确认 LeRobot/驱动版本、端口、关节数量和命名、单位、摄像头 ID、校准文件、急停/失能方式；先只连接并读状态。</p></div></div>
+      <div class="step"><div class="stepno">B</div><div><h3>人工遥操作与录制</h3><p>实现 SO-101 backend；低速 teleop 采集 20–50 个短 episode，验证视频/动作/关节时钟对齐、reset 和安全停机。</p></div></div>
+      <div class="step"><div class="stepno">C</div><div><h3>只实现 3–5 个原子技能</h3><p>observe、approach、grasp、lift、place；每项明确前置条件/成功证据/超时/失败恢复。先在桌面已知物体和低速条件完成闭环。</p></div></div>
+      <div class="step"><div class="stepno">D</div><div><h3>接入 GPT-6 Astra + ICL</h3><p>大脑只可调用注册技能；先 dry-run，再 shadow mode 比较计划与人工操作。GPT 供应商通过 provider interface 可替换。</p></div></div>
+      <div class="step"><div class="stepno">E</div><div><h3>训练或接入 SO-101 VLA</h3><p>用动作对齐的 LeRobot episodes 训练/验证；模型卡声明 embodiment 和 action schema。未知兼容性模型不会进入路由候选。</p></div></div>
+      <div class="step"><div class="stepno">F</div><div><h3>开启离线 RSI，再小流量实机</h3><p>固定 seed 与 verifier 后跑候选比较；人工批准安全、成功率、时延均达标的版本，再以短 episode、低速和操作者在场做 canary。</p></div></div>
+    </div>
+  </section>
+
+  <section id="research" class="section"><h2>论文与开源代码：采用什么、为什么</h2><p class="lead">不整套搬入多个框架。复用本项目已有的仿真、policy/session 和数据转换；借鉴开源项目里的边界设计，减少 runtime 与 SO-101 驱动的依赖耦合。结果数字均为论文/项目报告，需按同一任务复现。</p>
+    <div class="refgrid">
+      <article class="ref"><b><a href="https://github.com/Open-RUA/uni-robot-agent">uni-robot-agent</a> · harness 结构</b><p>统一工具合同，隔离 agent、orchestration、service 和 robot backend。采用其模块边界，不直接绑定 Codex/Claude runtime。</p><a href="https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/architecture.md">架构文档 ↗</a></article>
+      <article class="ref"><b><a href="https://github.com/DAGroup-PKU/PyRUA-Lean">PyRUA-Lean</a> · 有界技能程序</b><p>将动作原语组合成短程序，在局部检查结果、有限重试，降低每个小动作单独问模型的开销。实机只运行审核过的技能。</p><a href="https://github.com/DAGroup-PKU/PyRUA-Lean/blob/main/docs/getting-started/how-it-works.md">How it works ↗</a></article>
+      <article class="ref"><b><a href="https://github.com/DAGroup-PKU/PyRUA-Lean/tree/DataFarm">PyRUA-DataFarm</a> · 视频到动作数据</b><p>2026-11-04 项目更新：从少量校准示教构建模拟任务并生成带动作标注的多视角数据。可作后续数据扩增方向；首版先记录真实同步轨迹。</p><a href="https://arxiv.org/abs/2611.05320">论文 ↗</a></article>
+      <article class="ref"><b><a href="https://github.com/NVlabs/ENPIRE">ENPIRE</a> · RSI 实验合同</b><p>reset、验证器、试验预算和安全限制固定；保留失败证据，只改变 policy-side candidate，按测量结果决定留或退。</p><a href="https://github.com/NVlabs/ENPIRE/blob/main/enpire/policy/autoresearch_instruction.md">Auto-research rules ↗</a></article>
+      <article class="ref"><b><a href="https://github.com/NVlabs/ASPIRE">ASPIRE</a> · 技能精炼</b><p>将技能库当作可持续改进资产；开发 seed 调试，held-out seed 验证，只有 verifier 能独立复现的技能才晋级。</p><a href="https://github.com/NVlabs/ASPIRE/tree/main/.claude/skills/iterative-debugging">Fix loop ↗</a></article>
+      <article class="ref"><b><a href="https://arxiv.org/abs/2611.01560">Robot-Use Agent unified harness</a> · 跨任务运行</b><p>2026-11-02 近期工作，重点是共享工具/执行/监控接口验证开源模型的跨任务能力。适合作为统一接口参考。</p><a href="https://github.com/Open-RUA/uni-robot-agent">开源代码 ↗</a></article>
+    </div>
+  </section>
+  <footer class="foot">设计依据：awesome-embodied-agents（本地快照 commit 65f3308, 2026-11-07）、所链接的开源实现和当前 robot-inference 代码。此页面是工程方案与 scaffold 说明，不代表 SO-101 已完成接线、标定或实机验证。<br><span class="nowrap">本地代码入口：<code>robot-inference/embodied_agent/</code></span></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "embodiment_id": "so101",
+  "action_schema": "FILL_FROM_INSTALLED_DRIVER",
+  "units": "FILL_FROM_INSTALLED_DRIVER",
+  "joint_names": [],
+  "joint_limits": [],
+  "max_chunk_steps": 1,
+  "max_observation_age_ms": 200,
+  "max_action_validity_ms": 300,
+  "requires_operator_approval": true,
+  "notes": "Empty joint names/limits intentionally fail closed. Populate only from the connected SO-101 calibration and verify at low speed."
+}
